@@ -11,10 +11,9 @@ const port=3000;
 const storage = multer.memoryStorage(); 
 const upload = multer({ storage: storage , diskStorage });
 
-app.use(express.static('public'));
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/public/index.html");
+    res.sendFile(__dirname + "/index.html");
   });
   app.use(bodyParser.urlencoded({ extended: true}));
 
@@ -53,7 +52,7 @@ app.post  ("/mail",upload.single("file"),async(req,res)=>{
         console.log("Accepted email"+info.accepted);
         console.log("Rejected email"+info.rejected);
         
-res.send("File uploaded successfully");
+res.send("Mail sended successfully");
 });
 
 app.listen(port, () => {
